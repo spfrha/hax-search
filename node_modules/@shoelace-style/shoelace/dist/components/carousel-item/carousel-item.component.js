@@ -1,0 +1,10 @@
+import {
+  SlCarouselItem
+} from "../../chunks/chunk.2B7ZRWV6.js";
+import "../../chunks/chunk.QPEGQM42.js";
+import "../../chunks/chunk.Z7XDKKOD.js";
+import "../../chunks/chunk.TUVJKY7S.js";
+import "../../chunks/chunk.6M63UXML.js";
+export {
+  SlCarouselItem as default
+};

@@ -1,0 +1,11 @@
+import {
+  SlAvatar
+} from "./chunk.6O2NRLBS.js";
+
+// src/components/avatar/avatar.ts
+var avatar_default = SlAvatar;
+SlAvatar.define("sl-avatar");
+
+export {
+  avatar_default
+};

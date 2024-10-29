@@ -1,0 +1,11 @@
+import {
+  SlDropdown
+} from "./chunk.H7UDITUS.js";
+
+// src/components/dropdown/dropdown.ts
+var dropdown_default = SlDropdown;
+SlDropdown.define("sl-dropdown");
+
+export {
+  dropdown_default
+};

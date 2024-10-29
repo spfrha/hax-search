@@ -1,0 +1,11 @@
+import {
+  skeleton_default
+} from "../../chunks/chunk.SEMCHBH4.js";
+import "../../chunks/chunk.SYZQFYHQ.js";
+import "../../chunks/chunk.UVFVIZIV.js";
+import "../../chunks/chunk.Z7XDKKOD.js";
+import "../../chunks/chunk.TUVJKY7S.js";
+import "../../chunks/chunk.6M63UXML.js";
+export {
+  skeleton_default as default
+};

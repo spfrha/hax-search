@@ -1,0 +1,11 @@
+import {
+  relative_time_default
+} from "../../chunks/chunk.DK3WZXBM.js";
+import "../../chunks/chunk.AKA25VYF.js";
+import "../../chunks/chunk.2A3352EO.js";
+import "../../chunks/chunk.MAS2SHYD.js";
+import "../../chunks/chunk.Z7XDKKOD.js";
+import "../../chunks/chunk.6M63UXML.js";
+export {
+  relative_time_default as default
+};
