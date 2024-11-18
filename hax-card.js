@@ -2,82 +2,111 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class haxCard extends DDDSuper(I18NMixin(LitElement)) {
-
-  static get tag() {
-    return "hax-card";
-  }
+export class HaxCard extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
     this.title = '';
-    this.source = '';
-    this.alt = '';
-    this.desc = '';
+    this.description = '';
+    this.slug = '';
+    this.baseUrl = '';
+    this.metadata = null;
   }
 
   static get properties() {
     return {
-      source: { type: String },
       title: { type: String },
-      alt: { type: String },
-      desc: { type: String }
+      description: { type: String },
+      slug: { type: String },
+      baseUrl: { type: String },
+      metadata: { type: Object }
     };
   }
 
   static get styles() {
-    return [css`
-      .card {
-        display: inline-grid;
-        width: var(--ddd-card-width, 240px);
-        height: var(--ddd-card-height, 300px);
-        font-size: var(--ddd-font-size-md);
-        font-weight: var(--ddd-font-weight-bold);
-        border: var(--ddd-border-sm) solid var(--ddd-border-color);
-        border-radius: var(--ddd-radius-md);
-        transition: background-color 0.2s ease;
+    return [super.styles,css`
+      :host {
+        display: block;
+        text-align: center;
       }
-      .card:hover {
-        background-color: var(--ddd-theme-default-keystoneYellow);
+
+      .card {
+        height: 400px;
+        background: linear-gradient(to bottom right, #e09137, #8f94fb);
+        border: 1px solid red;
+
+      .content {
+        padding: var(--ddd-spacing-4);
       }
 
       .title {
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        height: var(--ddd-spacing-10);
         text-align: center;
-        color: var(--ddd-primary-color);
+        font-size: var(--ddd-spacing-6);
+        font-weight: var(--ddd-font-weight-bold);
       }
 
-      .desc {
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        height: var(--ddd-spacing-20);
-        text-align: center;
-        color: var(--ddd-secondary-color);
+      .description {
+        color: var(--ddd-theme-default-potential70);
+        overflow: hidden;
+        height: var(--ddd-spacing-24);
+        max-height: var(--ddd-spacing-24);
       }
 
-      img {
-        width: 100%;
-        height: var(--ddd-image-height, 180px);
-        display: block;
-        border-top-left-radius: var(--ddd-radius-md);
-        border-top-right-radius: var(--ddd-radius-md);
+      .metadata {
+        margin-top: var(--ddd-spacing-3);
+        font-size: var(--ddd-spacing-4);
+        color: var(--ddd-theme-default-potential50);
+        margin-bottom: var(--ddd-spacing-4);
       }
 
-      a {
+      .actions {
+        display: flex;
+      }
+
+      .button {
+        padding: var(--ddd-spacing-3) var(--ddd-spacing-3);
         text-decoration: none;
-        color: inherit;
       }
+
     `];
   }
 
   render() {
+    const content = `${this.baseUrl}${this.slug}`;
+    const sources = `${this.baseUrl}${this.location}`;
+
     return html`
       <div class="card">
-        <img src="${this.source}" alt="${this.alt}" />
-        <div class="title">${this.title}</div>
-        <div class="desc">${this.desc}</div>
+        <div class="content">
+          <div class="title">${this.title}</div>
+        </div>
+        ${this.metadata?.image ? html`
+          <img src="${this.metadata.image}" alt="${this.title}" style="width: 322px; max-height: 200px; object-fit: cover;">
+        ` : ''}
+        <div class="content">
+          <div class="description">${this.description}</div>
+          <div class="metadata">
+            <div>Updated: ${this.dateToString(this.metadata?.updated)}</div>
+            <div class="spacer"></div>
+            <div>Read time: ${this.metadata?.readtime} minute(s)</div>
+          </div>
+          <div class="actions">
+            <a href="${content}" target="_blank" class="button primary">View Content</a>
+            <a href="${sources}" target="_blank" class="button secondary">View Source</a>
+          </div>
+        </div>
       </div>
     `;
   }
 
+  dateToString(timestamp){
+    const date = new Date(timestamp * 1000);
+    return date.toUTCString();
+  }
+
+  static get tag() {
+    return "hax-card";
+  }
 }
+
+customElements.define(HaxCard.tag, HaxCard);

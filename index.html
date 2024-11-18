@@ -1,79 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <base href="/">
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Demonstration for hax-search">
-
+  <meta name="description" content="Demonstration for hax-search" />
+  <title>HAX Site Analyzer</title>
   <style>
-    :root, html, body {
+    body {
       margin: 0;
-      padding: 0;
+      background: linear-gradient(to bottom right, #c8754e61, #933a1f);
+      color: rgba(255, 255, 255, 0.697);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-    #demo {
-      margin: var(--ddd-spacing-2);
+
+    h1 {
+      font-size: 3px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
+
     hax-search {
-      margin: var(--ddd-spacing-2);
-      border: var(--ddd-border-md);
-      border-radius: var(--ddd-radius-lg);
+      width: 100%;
+      max-width: 1400px;
+      padding: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0px 4px 10px rgba(231, 9, 9, 0.833);
     }
-    hax-search:hover {
-      box-shadow: var(--ddd-boxShadow-sm);
-    }
-    #example {
-      --hax-search-font-size: var(--ddd-font-size-l);
-      background-color: var(--ddd-accent-2);
-      color: var(--ddd-primary-17);
+
+    hax-search:focus-within {
+      border-color: #ff7f50;
     }
   </style>
-  <title>hax-search</title>
 </head>
 
 <body>
-  <div id="demo">
-    <h1>hax-search</h1>
-    <hax-search></hax-search>
-  </div>
-  <script type="module" src="./hax-search.js"></script>
-
-  <!-- Take HAX, the Web and you further down the rabbit hole -->
-  <style>
-    #follow-the-white-rabbit {
-      margin: var(--ddd-spacing-4) auto 64px  16px;
-      background-color: var(--ddd-accent-4);
-      color: black;
-    }
-    #follow-the-white-rabbit[open] summary {
-      background-color: var(--ddd-accent-4) !important;
-      color: black;
-    }
-    #follow-the-white-rabbit[open] .content {
-      padding: 0 var(--ddd-spacing-4);
-    }
-    #follow-the-white-rabbit ul,
-    #follow-the-white-rabbit li {
-      padding: 0;
-      margin: 0;
-    }
-    #follow-the-white-rabbit li {
-      font-size: var(--ddd-font-size-xs);
-      list-style: none;
-    }
-    #follow-the-white-rabbit li strong,
-    #follow-the-white-rabbit li a {
-      padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-      color: black;
-      display: block;
-      font-weight: bold;
-    }
-    #follow-the-white-rabbit li:focus-within a,
-    #follow-the-white-rabbit li:hover a {
-      background-color: black;
-      color: yellow;
-    }
-  </style>
+  <h1>Welcome to HAX Site Analyzer</h1>
+  <hax-search></hax-search>
+  <script type="module" src="hax-search.js"></script>
 </body>
+
 </html>
